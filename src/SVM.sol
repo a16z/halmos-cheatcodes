@@ -32,4 +32,7 @@ interface SVM {
 
     // Create a new symbolic boolean value
     function createBool(string memory name) external pure returns (bool value);
+
+    // Assign symbolic values to uninitialized storage slots
+    function initEmptyStorage(address) external;
 }
