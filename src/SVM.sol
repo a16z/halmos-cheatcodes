@@ -33,6 +33,12 @@ interface SVM {
     // Create a new symbolic boolean value
     function createBool(string memory name) external pure returns (bool value);
 
+    // Create arbitrary symbolic calldata for the given contract and file name
+    function createCalldata(string memory filename, string memory contractName) external pure returns (bytes memory data);
+
+    // Create arbitrary symbolic calldata for the given contract name. Throw an exception if the contract name exists in multiple files.
+    function createCalldata(string memory contractName) external pure returns (bytes memory data);
+
     // Assign symbolic values to uninitialized storage slots
     function enableSymbolicStorage(address) external;
 }
