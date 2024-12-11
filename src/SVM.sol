@@ -43,4 +43,7 @@ interface SVM {
 
     // Assign symbolic values to uninitialized storage slots
     function enableSymbolicStorage(address) external;
+
+    // Snapshot the current storage of the given account and return a snapshot ID
+    function snapshotStorage(address) external returns (uint256 id);
 }
