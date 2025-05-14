@@ -33,9 +33,11 @@ interface SVM {
     // Create a new symbolic boolean value
     function createBool(string memory name) external pure returns (bool value);
 
-    // Create arbitrary symbolic calldata for the given contract or interface name.
-    // An exception is thrown if the contract name exists in multiple files. An optional filename (with .sol extension) can be provided to avoid ambiguity.
+    // Create arbitrary symbolic calldata for the given contract address, name, or interface name.
+    // An exception is thrown if the contract name is not found or is ambiguous across multiple files. An optional filename (with .sol extension) can be provided to avoid ambiguity.
     // By default, view and pure functions are excluded. An optional boolean flag can be set to include view and pure functions.
+    function createCalldata(address contractAddress) external pure returns (bytes memory data);
+    function createCalldata(address contractAddress, bool includeViewAndPureFunctions) external pure returns (bytes memory data);
     function createCalldata(string memory contractOrInterfaceName) external pure returns (bytes memory data);
     function createCalldata(string memory contractOrInterfaceName, bool includeViewAndPureFunctions) external pure returns (bytes memory data);
     function createCalldata(string memory filename, string memory contractOrInterfaceName) external pure returns (bytes memory data);
